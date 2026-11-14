@@ -1,0 +1,1911 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>แดชบอร์ดงานโภชนาการ · โรงพยาบาลเทพา</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #f6f8f7;
+      --card: #ffffff;
+      --text: #1f2924;
+      --muted: #6b7670;
+      --border: #e5eae7;
+      --green: #2d7a4f;
+      --green-dark: #23613e;
+      --green-light: #e9f5ee;
+      --green-tint: #eef7f1;
+      --amber: #d99b26;
+      --blue: #4285c4;
+      --purple: #7e57c2;
+      --coral: #d9634c;
+      --teal: #38a89d;
+      --gray: #8c9691;
+      --shadow: 0 2px 10px rgba(24, 48, 35, 0.06);
+      --radius: 16px;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Noto Sans Thai', 'Sarabun', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 20px 16px 48px;
+    }
+
+    /* Top utility bar */
+    .utility-bar {
+      display: flex;
+      justify-content: flex-end;
+      gap: 8px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+    .util-btn {
+      background: #fff;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      padding: 6px 12px;
+      border-radius: 10px;
+      font-size: 13px;
+      font-family: inherit;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.15s;
+    }
+    .util-btn:hover {
+      border-color: var(--green);
+      color: var(--green);
+      background: var(--green-light);
+    }
+
+    /* Banner */
+    .banner {
+      background: linear-gradient(120deg, #246842 0%, #3a8d5e 55%, #65bd88 100%);
+      border-radius: 18px;
+      padding: 22px 26px;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      box-shadow: 0 6px 18px rgba(45, 122, 79, 0.22);
+      margin-bottom: 18px;
+    }
+    .banner-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      flex-shrink: 0;
+      backdrop-filter: blur(4px);
+    }
+    .banner h1 {
+      margin: 0;
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: -0.2px;
+    }
+    .banner p {
+      margin: 2px 0 0;
+      font-size: 15px;
+      opacity: 0.92;
+    }
+
+    /* Main Tabs */
+    .main-tabs {
+      background: #fff;
+      border-radius: 16px;
+      padding: 6px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 6px;
+      box-shadow: var(--shadow);
+      margin-bottom: 18px;
+    }
+    .tab-btn {
+      border: none;
+      background: transparent;
+      padding: 12px 10px;
+      border-radius: 12px;
+      font-family: inherit;
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--muted);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .tab-btn:hover {
+      color: var(--text);
+      background: #f3f6f4;
+    }
+    .tab-btn.active {
+      background: var(--green);
+      color: #fff;
+      font-weight: 600;
+      box-shadow: 0 2px 8px rgba(45, 122, 79, 0.25);
+    }
+
+    /* Sub Tabs */
+    .sub-tabs {
+      background: #fff;
+      border-radius: 14px;
+      padding: 5px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px;
+      box-shadow: var(--shadow);
+      margin-bottom: 18px;
+    }
+    .sub-tab-btn {
+      border: none;
+      background: transparent;
+      padding: 11px 12px;
+      border-radius: 10px;
+      font-family: inherit;
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--muted);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .sub-tab-btn.active {
+      background: var(--green);
+      color: #fff;
+      font-weight: 600;
+    }
+
+    /* Date Pill Bar */
+    .date-bar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+    .date-pill-wrap {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+    }
+    .date-pill {
+      background: #fff;
+      border: 1px solid #d7dfda;
+      border-radius: 10px;
+      padding: 7px 14px;
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--text);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+    }
+    .date-pill:hover {
+      border-color: var(--green);
+    }
+    .native-date-input {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      cursor: pointer;
+      width: 100%;
+      height: 100%;
+    }
+    .date-nav-btn {
+      background: #fff;
+      border: 1px solid #d7dfda;
+      border-radius: 10px;
+      padding: 7px 11px;
+      font-family: inherit;
+      font-size: 14px;
+      color: var(--muted);
+      cursor: pointer;
+    }
+    .date-nav-btn:hover {
+      border-color: var(--green);
+      color: var(--green);
+    }
+
+    /* KPI Grid */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+    .kpi-card {
+      background: #fff;
+      border-radius: var(--radius);
+      padding: 16px 18px;
+      box-shadow: var(--shadow);
+      border-left: 4px solid var(--green);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      min-height: 92px;
+    }
+    .kpi-card.amber { border-left-color: var(--amber); }
+    .kpi-card.blue { border-left-color: var(--blue); }
+    .kpi-card.purple { border-left-color: var(--purple); }
+    .kpi-card.solid-green {
+      background: var(--green);
+      border-left-color: var(--green);
+      color: #fff;
+    }
+    .kpi-val {
+      font-size: 30px;
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 4px;
+    }
+    .kpi-card.green-text .kpi-val { color: var(--green); }
+    .kpi-card.amber .kpi-val { color: var(--amber); }
+    .kpi-card.blue .kpi-val { color: var(--blue); }
+    .kpi-card.purple .kpi-val { color: var(--purple); }
+    .kpi-label {
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .kpi-card.solid-green .kpi-label {
+      color: rgba(255,255,255,0.9);
+    }
+    .kpi-icon {
+      font-size: 22px;
+      line-height: 1;
+      opacity: 0.9;
+    }
+
+    /* Cards */
+    .card {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 20px 22px;
+      box-shadow: var(--shadow);
+      margin-bottom: 18px;
+    }
+    .card-title {
+      font-size: 17px;
+      font-weight: 700;
+      margin: 0 0 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text);
+    }
+    .card-title::before {
+      content: '';
+      width: 4px;
+      height: 18px;
+      border-radius: 4px;
+      background: var(--green);
+      display: inline-block;
+    }
+
+    /* Tables */
+    .table-wrap { overflow-x: auto; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 15px;
+    }
+    th {
+      text-align: left;
+      color: var(--muted);
+      font-weight: 500;
+      font-size: 14px;
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+    }
+    th.num, td.num {
+      text-align: right;
+      font-variant-numeric: tabular-nums;
+    }
+    td {
+      padding: 12px;
+      border-bottom: 1px solid #f0f3f1;
+    }
+    tbody tr:nth-child(even) {
+      background: var(--green-tint);
+    }
+    tbody tr:last-child td {
+      border-bottom: none;
+    }
+    tr.total-row td {
+      background: var(--green-tint) !important;
+      font-weight: 700;
+      border-top: 1px solid #d5e6dc;
+      border-bottom: none;
+    }
+
+    /* Form Inputs */
+    .meal-input {
+      width: 96px;
+      padding: 8px 10px;
+      border: 1px solid #d5ddd8;
+      border-radius: 10px;
+      background: #f5f7f6;
+      text-align: right;
+      font-family: inherit;
+      font-size: 15px;
+      color: var(--text);
+      font-variant-numeric: tabular-nums;
+      transition: all 0.15s;
+    }
+    .meal-input:focus {
+      outline: none;
+      border-color: var(--green);
+      background: #fff;
+      box-shadow: 0 0 0 3px rgba(45, 122, 79, 0.12);
+    }
+    textarea.note-box {
+      width: 100%;
+      min-height: 76px;
+      border: 1px solid #d5ddd8;
+      border-radius: 12px;
+      padding: 10px 12px;
+      font-family: inherit;
+      font-size: 14px;
+      resize: vertical;
+      background: #fafcfb;
+    }
+    textarea.note-box:focus {
+      outline: none;
+      border-color: var(--green);
+      background: #fff;
+    }
+
+    /* Buttons */
+    .btn-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 16px;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      background: var(--green);
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      padding: 11px 22px;
+      font-family: inherit;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 3px 10px rgba(45, 122, 79, 0.22);
+      transition: background 0.15s;
+    }
+    .btn-primary:hover { background: var(--green-dark); }
+    .btn-danger-outline {
+      background: #fff;
+      color: #c94132;
+      border: 1px solid #d9776c;
+      border-radius: 12px;
+      padding: 10px 18px;
+      font-family: inherit;
+      font-size: 15px;
+      font-weight: 500;
+      cursor: pointer;
+    }
+    .btn-danger-outline:hover { background: #fdf2f0; }
+    .btn-soft {
+      background: var(--green-light);
+      color: var(--green-dark);
+      border: 1px solid #c7e3d2;
+      border-radius: 10px;
+      padding: 8px 14px;
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .btn-soft:hover { background: #d9eee1; }
+    .helper-text {
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    /* Two-column layouts */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+    .sub-heading {
+      font-size: 16px;
+      font-weight: 600;
+      margin: 0 0 14px;
+      color: var(--text);
+    }
+
+    /* Donut Chart + Legend */
+    .donut-wrap {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .donut-svg-box {
+      position: relative;
+      width: 176px;
+      height: 176px;
+      flex-shrink: 0;
+    }
+    .donut-center {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
+    }
+    .donut-center .big {
+      font-size: 26px;
+      font-weight: 700;
+      line-height: 1.1;
+    }
+    .donut-center .small {
+      font-size: 12px;
+      color: var(--muted);
+    }
+    .legend-list {
+      flex: 1;
+      min-width: 190px;
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+    }
+    .legend-item {
+      display: grid;
+      grid-template-columns: 12px 1fr auto auto;
+      align-items: center;
+      gap: 10px;
+      font-size: 14px;
+    }
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 4px;
+      display: inline-block;
+    }
+    .legend-val { font-weight: 700; text-align: right; min-width: 30px; }
+    .legend-pct { color: var(--muted); text-align: right; min-width: 38px; }
+
+    /* Horizontal Bar List */
+    .hbar-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .hbar-row {
+      display: grid;
+      grid-template-columns: 165px 1fr;
+      align-items: center;
+      gap: 14px;
+    }
+    .hbar-row.compact {
+      grid-template-columns: 140px 1fr;
+      gap: 10px;
+    }
+    .hbar-label {
+      font-size: 14px;
+      color: var(--text);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .hbar-row.compact .hbar-label { font-size: 12px; }
+    .hbar-track {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .hbar-fill {
+      height: 24px;
+      border-radius: 6px;
+      background: var(--green);
+      transition: width 0.3s ease;
+      min-width: 2px;
+    }
+    .hbar-row.compact .hbar-fill {
+      height: 14px;
+      border-radius: 4px;
+    }
+    .hbar-num {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text);
+    }
+    .hbar-row.compact .hbar-num { font-size: 12px; }
+
+    /* Stacked Column Chart */
+    .chart-legend {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 14px;
+      font-size: 13px;
+      color: var(--text);
+    }
+    .chart-legend span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .stacked-grid {
+      display: flex;
+      align-items: flex-end;
+      gap: 8px;
+      height: 220px;
+      padding-top: 28px;
+      border-bottom: 1px solid #eef2ef;
+    }
+    .stacked-col {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 100%;
+      justify-content: flex-end;
+      min-width: 18px;
+    }
+    .stacked-total {
+      font-size: 13px;
+      font-weight: 500;
+      margin-bottom: 4px;
+      color: var(--text);
+    }
+    .stacked-bars {
+      width: 100%;
+      max-width: 54px;
+      display: flex;
+      flex-direction: column-reverse;
+      overflow: hidden;
+      border-radius: 4px 4px 0 0;
+      transition: height 0.3s ease;
+    }
+    .stacked-bars.wide { max-width: none; }
+    .seg-b { background: var(--green); }
+    .seg-l { background: var(--amber); }
+    .seg-d { background: var(--blue); }
+    .stacked-day {
+      margin-top: 8px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .stacked-day.selected {
+      color: var(--green);
+      font-weight: 700;
+    }
+
+    /* Attendance notes */
+    .divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 20px 0 16px;
+    }
+    .note-list {
+      list-style: none;
+      padding: 0;
+      margin: 8px 0 0;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      font-size: 15px;
+    }
+
+    /* Staff Attendance Editor (Tab 2.2) */
+    .staff-edit-row {
+      display: grid;
+      grid-template-columns: 1fr auto 220px;
+      gap: 12px;
+      align-items: center;
+      padding: 12px;
+      border-bottom: 1px solid #f0f3f1;
+    }
+    .staff-edit-row:nth-child(even) { background: var(--green-tint); }
+    .status-toggle {
+      display: inline-flex;
+      background: #edf1ef;
+      padding: 4px;
+      border-radius: 10px;
+      gap: 4px;
+    }
+    .status-btn {
+      border: none;
+      background: transparent;
+      padding: 6px 14px;
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      color: var(--muted);
+    }
+    .status-btn.present.active {
+      background: var(--green);
+      color: #fff;
+    }
+    .status-btn.absent.active {
+      background: var(--coral);
+      color: #fff;
+    }
+    .reason-input {
+      width: 100%;
+      padding: 7px 10px;
+      border: 1px solid #d5ddd8;
+      border-radius: 9px;
+      font-family: inherit;
+      font-size: 14px;
+      background: #fff;
+    }
+    .reason-input:disabled {
+      background: #f3f5f4;
+      color: #aaa;
+    }
+
+    /* Staff Manager Box */
+    .staff-chip-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+    .staff-chip {
+      background: var(--green-light);
+      color: var(--green-dark);
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 13px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .staff-chip button {
+      border: none;
+      background: none;
+      color: #c94132;
+      font-weight: 700;
+      cursor: pointer;
+      padding: 0 2px;
+      font-size: 14px;
+    }
+
+    /* Range picker */
+    .range-bar {
+      display: flex;
+      align-items: flex-end;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .range-field label {
+      display: block;
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 5px;
+    }
+
+    /* Toast */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: #1f2924;
+      color: #fff;
+      padding: 12px 18px;
+      border-radius: 12px;
+      font-size: 14px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+      opacity: 0;
+      transform: translateY(12px);
+      pointer-events: none;
+      transition: all 0.25s;
+      z-index: 999;
+    }
+    .toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .hidden { display: none !important; }
+
+    @media (max-width: 900px) {
+      .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+      .two-col { grid-template-columns: 1fr; }
+      .staff-edit-row { grid-template-columns: 1fr; gap: 8px; }
+      .hbar-row { grid-template-columns: 120px 1fr; }
+    }
+    @media (max-width: 520px) {
+      .kpi-grid { grid-template-columns: 1fr; }
+      .tab-btn { font-size: 13px; padding: 10px 6px; }
+      .meal-input { width: 72px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Utility Backup Controls -->
+    <div class="utility-bar">
+      <button class="util-btn" onclick="exportJSON()">💾 สำรองข้อมูล (JSON)</button>
+      <label class="util-btn" style="margin:0;">
+        📂 นำเข้าข้อมูล (JSON)
+        <input type="file" accept=".json" style="display:none" onchange="importJSON(event)" />
+      </label>
+      <button class="util-btn" onclick="resetDemoData()">🔄 รีเซ็ตข้อมูลตัวอย่าง</button>
+    </div>
+
+    <!-- Header Banner -->
+    <header class="banner">
+      <div class="banner-icon">🥗</div>
+      <div>
+        <h1>แดชบอร์ดงานโภชนาการ</h1>
+        <p>โรงพยาบาลเทพา</p>
+      </div>
+    </header>
+
+    <!-- Main Navigation -->
+    <nav class="main-tabs">
+      <button class="tab-btn active" id="tab-btn-dashboard" onclick="switchMainTab('dashboard')">1. แดชบอร์ด</button>
+      <button class="tab-btn" id="tab-btn-entry" onclick="switchMainTab('entry')">2. บันทึกข้อมูล</button>
+      <button class="tab-btn" id="tab-btn-report" onclick="switchMainTab('report')">3. รายงานผล</button>
+    </nav>
+
+    <!-- ==================== TAB 1: DASHBOARD ==================== -->
+    <section id="tab-dashboard">
+      <div class="date-bar">
+        <button class="date-nav-btn" onclick="shiftDate(-1)">◀ วันก่อน</button>
+        <div class="date-pill-wrap">
+          <div class="date-pill">📅 <span id="dash-date-label"></span></div>
+          <input type="date" class="native-date-input" id="dash-date-input" onchange="onDateChange(this.value)" />
+        </div>
+        <button class="date-nav-btn" onclick="shiftDate(1)">วันถัดไป ▶</button>
+        <button class="date-nav-btn" onclick="setToday()">วันนี้</button>
+      </div>
+
+      <div class="kpi-grid" id="dash-kpi-grid"></div>
+
+      <div class="card">
+        <h2 class="card-title" id="dash-daily-table-title">ผู้รับบริการรายวัน</h2>
+        <div class="table-wrap" id="dash-daily-table"></div>
+      </div>
+
+      <div class="card">
+        <h2 class="card-title">บุคลากรมาทำงาน</h2>
+        <div class="two-col">
+          <div>
+            <p class="sub-heading" id="dash-att-date-sub"></p>
+            <div class="donut-wrap" id="dash-att-donut"></div>
+          </div>
+          <div>
+            <p class="sub-heading" id="dash-att-month-sub"></p>
+            <div class="hbar-list" id="dash-att-bars"></div>
+          </div>
+        </div>
+        <hr class="divider" />
+        <div id="dash-att-notes"></div>
+      </div>
+
+      <div class="card">
+        <h2 class="card-title">จำนวนมื้อ 14 วันถึงวันที่เลือก (แยกตามมื้อ)</h2>
+        <div class="chart-legend">
+          <span><i class="dot" style="background:var(--green)"></i> เช้า</span>
+          <span><i class="dot" style="background:var(--amber)"></i> เที่ยง</span>
+          <span><i class="dot" style="background:var(--blue)"></i> เย็น</span>
+        </div>
+        <div id="dash-14days-chart"></div>
+      </div>
+
+      <div class="card">
+        <h2 class="card-title" id="dash-month-cat-title">ผู้รับบริการแยกตามประเภท</h2>
+        <div class="hbar-list" id="dash-month-cat-bars"></div>
+      </div>
+
+      <div class="card">
+        <h2 class="card-title" id="dash-month-ratio-title">สัดส่วนผู้รับบริการ</h2>
+        <div class="two-col">
+          <div>
+            <p class="sub-heading">แยกตามประเภท</p>
+            <div class="donut-wrap" id="dash-month-donut-cat"></div>
+          </div>
+          <div>
+            <p class="sub-heading">แยกตามมื้อ</p>
+            <div class="donut-wrap" id="dash-month-donut-meal"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== TAB 2: DATA ENTRY ==================== -->
+    <section id="tab-entry" class="hidden">
+      <div class="date-bar">
+        <button class="date-nav-btn" onclick="shiftDate(-1)">◀ วันก่อน</button>
+        <div class="date-pill-wrap">
+          <div class="date-pill">📅 <span id="entry-date-label"></span></div>
+          <input type="date" class="native-date-input" id="entry-date-input" onchange="onDateChange(this.value)" />
+        </div>
+        <button class="date-nav-btn" onclick="shiftDate(1)">วันถัดไป ▶</button>
+        <button class="date-nav-btn" onclick="setToday()">วันนี้</button>
+      </div>
+
+      <div class="sub-tabs">
+        <button class="sub-tab-btn active" id="subtab-btn-meals" onclick="switchSubTab('meals')">2.1 ผู้รับบริการ</button>
+        <button class="sub-tab-btn" id="subtab-btn-staff" onclick="switchSubTab('staff')">2.2 บุคลากร</button>
+      </div>
+
+      <!-- 2.1 Meals -->
+      <div id="subtab-meals" class="card">
+        <h2 class="card-title">จำนวนผู้รับบริการ แยกตามมื้อ</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>ประเภท</th>
+                <th class="num">เช้า</th>
+                <th class="num">เที่ยง</th>
+                <th class="num">เย็น</th>
+              </tr>
+            </thead>
+            <tbody id="entry-meals-tbody"></tbody>
+          </table>
+        </div>
+        <div style="margin-top:18px;">
+          <label style="display:block;font-size:14px;color:var(--muted);margin-bottom:6px;">หมายเหตุ</label>
+          <textarea class="note-box" id="entry-meal-note" placeholder="ระบุหมายเหตุเพิ่มเติมสำหรับวันนี้ (ถ้ามี)..."></textarea>
+        </div>
+        <div class="btn-row">
+          <button class="btn-primary" id="save-meals-btn" onclick="saveMeals()">บันทึกข้อมูลวันนี้</button>
+          <button class="btn-danger-outline hidden" id="delete-meals-btn" onclick="deleteMeals()">ลบข้อมูลวันนี้</button>
+          <span class="helper-text" id="meals-status-hint"></span>
+        </div>
+      </div>
+
+      <!-- 2.2 Staff Attendance -->
+      <div id="subtab-staff" class="hidden">
+        <div class="card">
+          <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:14px;">
+            <h2 class="card-title" style="margin:0;">บันทึกการมาทำงานของบุคลากร</h2>
+            <button class="btn-soft" onclick="toggleStaffManager()">⚙️ จัดการรายชื่อบุคลากร</button>
+          </div>
+          <div id="entry-staff-list"></div>
+          <div class="btn-row">
+            <button class="btn-primary" id="save-staff-btn" onclick="saveAttendance()">บันทึกข้อมูลบุคลากร</button>
+            <span class="helper-text" id="staff-status-hint"></span>
+          </div>
+        </div>
+
+        <div class="card hidden" id="staff-manager-card">
+          <h2 class="card-title">จัดการรายชื่อบุคลากร</h2>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;">
+            <input type="text" id="new-staff-name" class="reason-input" style="max-width:320px;" placeholder="พิมพ์ชื่อ-นามสกุลบุคลากรใหม่..." />
+            <button class="btn-primary" onclick="addStaffMember()">+ เพิ่มบุคลากร</button>
+          </div>
+          <div class="staff-chip-list" id="staff-chip-list"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== TAB 3: REPORT ==================== -->
+    <section id="tab-report" class="hidden">
+      <div class="card">
+        <h2 class="card-title">เลือกช่วงวันที่</h2>
+        <div class="range-bar">
+          <div class="range-field">
+            <label>ตั้งแต่</label>
+            <div class="date-pill-wrap">
+              <div class="date-pill" id="rep-start-label"></div>
+              <input type="date" class="native-date-input" id="rep-start-input" onchange="onReportRangeChange()" />
+            </div>
+          </div>
+          <div class="range-field">
+            <label>ถึง</label>
+            <div class="date-pill-wrap">
+              <div class="date-pill" id="rep-end-label"></div>
+              <input type="date" class="native-date-input" id="rep-end-input" onchange="onReportRangeChange()" />
+            </div>
+          </div>
+          <button class="btn-soft" onclick="downloadCSV()">📥 ดาวน์โหลด CSV</button>
+        </div>
+      </div>
+
+      <div class="kpi-grid" id="rep-kpi-grid"></div>
+
+      <div class="card">
+        <h2 class="card-title">สรุปตามประเภทผู้รับบริการ</h2>
+        <div class="table-wrap" id="rep-cat-table"></div>
+      </div>
+
+      <div class="card">
+        <h2 class="card-title">สัดส่วนตามประเภท (ช่วงที่เลือก)</h2>
+        <div class="hbar-list" id="rep-cat-bars"></div>
+      </div>
+
+      <div class="card">
+        <h2 class="card-title">สัดส่วนผู้รับบริการ (ช่วงที่เลือก)</h2>
+        <div class="two-col">
+          <div>
+            <p class="sub-heading">แยกตามประเภท</p>
+            <div class="donut-wrap" id="rep-donut-cat"></div>
+          </div>
+          <div>
+            <p class="sub-heading">แยกตามมื้อ</p>
+            <div class="donut-wrap" id="rep-donut-meal"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2 class="card-title">จำนวนมื้อรายวัน</h2>
+        <div class="chart-legend">
+          <span><i class="dot" style="background:var(--green)"></i> เช้า</span>
+          <span><i class="dot" style="background:var(--amber)"></i> เที่ยง</span>
+          <span><i class="dot" style="background:var(--blue)"></i> เย็น</span>
+        </div>
+        <div id="rep-daily-chart"></div>
+      </div>
+
+      <div class="card">
+        <h2 class="card-title">รายวัน</h2>
+        <div class="table-wrap" id="rep-daily-table"></div>
+      </div>
+
+      <div class="card">
+        <h2 class="card-title">การมาทำงานของบุคลากร</h2>
+        <div class="table-wrap" id="rep-staff-table"></div>
+        <p class="helper-text" id="rep-staff-foot" style="margin:12px 0 0;"></p>
+      </div>
+    </section>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script>
+    const STORAGE_KEY = 'tepha_nutrition_dashboard_v1';
+
+    const CATEGORIES = [
+      { key: 'normal',   label: 'อาหารธรรมดา',        color: '#2d7a4f' },
+      { key: 'disease',  label: 'เฉพาะโรค',            color: '#d99b26' },
+      { key: 'vip',      label: 'ห้องพิเศษ',            color: '#4285c4' },
+      { key: 'isolate',  label: 'แยกโรค',              color: '#8e63ce' },
+      { key: 'medical',  label: 'อาหารทางการแพทย์',   color: '#d9634c' },
+      { key: 'tiffin',   label: 'เจ้าหน้าที่ผูกปิ่นโต', color: '#38a89d' },
+      { key: 'catering', label: 'การจัดเลี้ยง',         color: '#8c9691' }
+    ];
+
+    const THAI_MONTHS_SHORT = ['ม.ค.', 'ก.พ.', 'มี.ค.', 'เม.ย.', 'พ.ค.', 'มิ.ย.', 'ก.ค.', 'ส.ค.', 'ก.ย.', 'ต.ค.', 'พ.ย.', 'ธ.ค.'];
+    const THAI_MONTHS_FULL  = ['มกราคม', 'กุมภาพันธ์', 'มีนาคม', 'เมษายน', 'พฤษภาคม', 'มิถุนายน', 'กรกฎาคม', 'สิงหาคม', 'กันยายน', 'ตุลาคม', 'พฤศจิกายน', 'ธันวาคม'];
+
+    function getDefaultSeedData() {
+      return {
+        staff: [
+          { id: 's1', name: 'สิริยาพร รองเดช' },
+          { id: 's2', name: 'ชะวานีย์ นิสัน' },
+          { id: 's3', name: 'ภาวิณี ศรีรัตนโกมุท' },
+          { id: 's4', name: 'มณฑิตา นิเหร็ม' },
+          { id: 's5', name: 'พิลนา ช่วยเจริญ' },
+          { id: 's6', name: 'ศิริพร จันทสะโร' },
+          { id: 's7', name: 'ปาณนิภาภร เปาะอีแต' },
+          { id: 's8', name: 'เบญจวรรณ แก้วอรุณ' }
+        ],
+        records: {
+          '2026-11-13': {
+            hasMeals: true,
+            hasAttendance: true,
+            meals: {
+              normal:   { b: 10, l: 14, d: 10 },
+              disease:  { b: 20, l: 23, d: 12 },
+              vip:      { b: 5,  l: 6,  d: 9 },
+              isolate:  { b: 3,  l: 5,  d: 3 },
+              medical:  { b: 4,  l: 4,  d: 4 },
+              tiffin:   { b: 5,  l: 4,  d: 5 },
+              catering: { b: 5,  l: 4,  d: 5 }
+            },
+            mealNote: '',
+            attendance: {
+              s1: { status: 'present', reason: '' },
+              s2: { status: 'present', reason: '' },
+              s3: { status: 'present', reason: '' },
+              s4: { status: 'present', reason: '' },
+              s5: { status: 'present', reason: '' },
+              s6: { status: 'absent', reason: 'อบรม' },
+              s7: { status: 'absent', reason: 'อบรม' },
+              s8: { status: 'absent', reason: 'อบรม' }
+            }
+          },
+          '2026-11-14': {
+            hasMeals: true,
+            hasAttendance: true,
+            meals: {
+              normal:   { b: 10, l: 12, d: 15 },
+              disease:  { b: 20, l: 25, d: 10 },
+              vip:      { b: 10, l: 10, d: 11 },
+              isolate:  { b: 10, l: 10, d: 10 },
+              medical:  { b: 4,  l: 4,  d: 4 },
+              tiffin:   { b: 0,  l: 30, d: 0 },
+              catering: { b: 4,  l: 4,  d: 4 }
+            },
+            mealNote: '',
+            attendance: {
+              s1: { status: 'present', reason: '' },
+              s2: { status: 'present', reason: '' },
+              s3: { status: 'present', reason: '' },
+              s4: { status: 'present', reason: '' },
+              s5: { status: 'present', reason: '' },
+              s6: { status: 'absent', reason: 'อบรม' },
+              s7: { status: 'absent', reason: 'อบรม' },
+              s8: { status: 'absent', reason: 'อบรม' }
+            }
+          }
+        }
+      };
+    }
+
+    function loadDB() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (!raw) {
+          const seed = getDefaultSeedData();
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(seed));
+          return seed;
+        }
+        return JSON.parse(raw);
+      } catch (e) {
+        return getDefaultSeedData();
+      }
+    }
+
+    function saveDB() {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(db));
+    }
+
+    function toLocalISODate(date) {
+      const y = date.getFullYear();
+      const m = String(date.getMonth() + 1).padStart(2, '0');
+      const d = String(date.getDate()).padStart(2, '0');
+      return `${y}-${m}-${d}`;
+    }
+
+    function formatThaiShort(iso) {
+      if (!iso) return '-';
+      const [y, m, d] = iso.split('-').map(Number);
+      return `${d} ${THAI_MONTHS_SHORT[m - 1]} ${y + 543}`;
+    }
+
+    function formatThaiMonthYear(iso) {
+      const [y, m] = iso.split('-').map(Number);
+      return `${THAI_MONTHS_FULL[m - 1]} ${y + 543}`;
+    }
+
+    function addDays(iso, delta) {
+      const [y, m, d] = iso.split('-').map(Number);
+      const dt = new Date(y, m - 1, d + delta);
+      return toLocalISODate(dt);
+    }
+
+    function showToast(msg) {
+      const el = document.getElementById('toast');
+      el.textContent = msg;
+      el.classList.add('show');
+      clearTimeout(window.__toastTimer);
+      window.__toastTimer = setTimeout(() => el.classList.remove('show'), 2600);
+    }
+
+    let db = loadDB();
+    let currentMainTab = 'dashboard';
+    let currentSubTab = 'meals';
+    let selectedDate = toLocalISODate(new Date());
+    let reportStart = selectedDate.slice(0, 8) + '01';
+    let reportEnd = selectedDate;
+
+    // ---------- Helpers for aggregation ----------
+    function emptyMeals() {
+      const obj = {};
+      CATEGORIES.forEach(c => obj[c.key] = { b: 0, l: 0, d: 0 });
+      return obj;
+    }
+
+    function getDaySummary(iso) {
+      const rec = db.records[iso];
+      const meals = rec && rec.hasMeals ? rec.meals : emptyMeals();
+      let b = 0, l = 0, d = 0;
+      const byCat = {};
+      CATEGORIES.forEach(c => {
+        const m = meals[c.key] || { b: 0, l: 0, d: 0 };
+        const vb = Number(m.b) || 0;
+        const vl = Number(m.l) || 0;
+        const vd = Number(m.d) || 0;
+        b += vb; l += vl; d += vd;
+        byCat[c.key] = { b: vb, l: vl, d: vd, total: vb + vl + vd };
+      });
+      const total = b + l + d;
+
+      const totalStaff = db.staff.length;
+      let present = 0;
+      const absentNotes = [];
+      const hasAtt = !!(rec && rec.hasAttendance);
+      if (hasAtt && rec.attendance) {
+        db.staff.forEach(st => {
+          const a = rec.attendance[st.id];
+          if (a && a.status === 'absent') {
+            absentNotes.push({ name: st.name, reason: a.reason || 'ไม่มา' });
+          } else {
+            present++;
+          }
+        });
+      }
+      return {
+        hasMeals: !!(rec && rec.hasMeals),
+        hasAttendance: hasAtt,
+        b, l, d, total, byCat,
+        present,
+        absent: hasAtt ? (totalStaff - present) : 0,
+        totalStaff,
+        absentNotes
+      };
+    }
+
+    function aggregateRange(startIso, endIso) {
+      const dates = Object.keys(db.records)
+        .filter(d => d >= startIso && d <= endIso)
+        .sort();
+
+      let b = 0, l = 0, d = 0, mealDays = 0, attDays = 0;
+      const byCat = {};
+      CATEGORIES.forEach(c => byCat[c.key] = { b: 0, l: 0, d: 0, total: 0 });
+
+      const staffStats = {};
+      db.staff.forEach(s => staffStats[s.id] = { id: s.id, name: s.name, present: 0, absent: 0 });
+
+      const dailyList = [];
+      dates.forEach(iso => {
+        const sum = getDaySummary(iso);
+        if (sum.hasMeals) {
+          mealDays++;
+          b += sum.b; l += sum.l; d += sum.d;
+          CATEGORIES.forEach(c => {
+            byCat[c.key].b += sum.byCat[c.key].b;
+            byCat[c.key].l += sum.byCat[c.key].l;
+            byCat[c.key].d += sum.byCat[c.key].d;
+            byCat[c.key].total += sum.byCat[c.key].total;
+          });
+        }
+        if (sum.hasAttendance) {
+          attDays++;
+          const rec = db.records[iso];
+          db.staff.forEach(s => {
+            const a = rec.attendance && rec.attendance[s.id];
+            if (a && a.status === 'absent') staffStats[s.id].absent++;
+            else staffStats[s.id].present++;
+          });
+        }
+        if (sum.hasMeals || sum.hasAttendance) {
+          dailyList.push({ iso, ...sum });
+        }
+      });
+
+      return {
+        b, l, d, total: b + l + d,
+        mealDays, attDays,
+        byCat,
+        staffList: Object.values(staffStats),
+        dailyList
+      };
+    }
+
+    // ---------- Reusable Chart Renderers ----------
+    function renderDonut(containerId, items, totalValue) {
+      const el = document.getElementById(containerId);
+      const r = 56, cx = 88, cy = 88, C = 2 * Math.PI * r;
+      let circles = '';
+      if (totalValue <= 0) {
+        circles = `<circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="#e8edea" stroke-width="26"></circle>`;
+      } else {
+        let offset = 0;
+        items.forEach(it => {
+          if (it.value <= 0) return;
+          const seg = (it.value / totalValue) * C;
+          circles += `<circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="${it.color}" stroke-width="26"
+            stroke-dasharray="${seg} ${C}" stroke-dashoffset="${-offset}" transform="rotate(-90 ${cx} ${cy})"></circle>`;
+          offset += seg;
+        });
+      }
+
+      const legendHtml = items.map(it => {
+        const pct = totalValue > 0 ? Math.round((it.value / totalValue) * 100) : 0;
+        return `
+          <div class="legend-item">
+            <span class="dot" style="background:${it.color}"></span>
+            <span>${it.label}</span>
+            <span class="legend-val">${it.value}</span>
+            <span class="legend-pct">${pct}%</span>
+          </div>
+        `;
+      }).join('');
+
+      el.innerHTML = `
+        <div class="donut-svg-box">
+          <svg viewBox="0 0 176 176" width="176" height="176">${circles}</svg>
+          <div class="donut-center">
+            <span class="big">${totalValue}</span>
+            <span class="small">รวม</span>
+          </div>
+        </div>
+        <div class="legend-list">${legendHtml}</div>
+      `;
+    }
+
+    function renderHBars(containerId, items, compact = false) {
+      const el = document.getElementById(containerId);
+      const maxVal = Math.max(...items.map(i => i.value), 1);
+      el.innerHTML = items.map(it => {
+        const pct = it.value > 0 ? Math.max((it.value / maxVal) * 100, 2) : 0;
+        return `
+          <div class="hbar-row ${compact ? 'compact' : ''}">
+            <div class="hbar-label" title="${it.label}">${it.label}</div>
+            <div class="hbar-track">
+              ${it.value > 0 ? `<div class="hbar-fill" style="width:${pct}%"></div>` : ''}
+              <span class="hbar-num">${it.value}</span>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function renderStackedColumns(containerId, columns, wide = false) {
+      const el = document.getElementById(containerId);
+      if (columns.length === 0) {
+        el.innerHTML = `<p class="helper-text" style="text-align:center;padding:30px 0;">ยังไม่มีข้อมูลในช่วงที่เลือก</p>`;
+        return;
+      }
+      const maxTotal = Math.max(...columns.map(c => c.total), 1);
+      const maxBarPx = 155;
+      el.innerHTML = `
+        <div class="stacked-grid">
+          ${columns.map(col => {
+            const hTotal = col.total > 0 ? Math.max((col.total / maxTotal) * maxBarPx, 6) : 0;
+            const hb = col.total > 0 ? (col.b / col.total) * hTotal : 0;
+            const hl = col.total > 0 ? (col.l / col.total) * hTotal : 0;
+            const hd = col.total > 0 ? (col.d / col.total) * hTotal : 0;
+            return `
+              <div class="stacked-col" title="${col.title}&#10;เช้า: ${col.b} | เที่ยง: ${col.l} | เย็น: ${col.d}&#10;รวม: ${col.total}">
+                <div class="stacked-total">${col.total > 0 ? col.total : ''}</div>
+                <div class="stacked-bars ${wide ? 'wide' : ''}" style="height:${hTotal}px">
+                  <div class="seg-b" style="height:${hb}px"></div>
+                  <div class="seg-l" style="height:${hl}px"></div>
+                  <div class="seg-d" style="height:${hd}px"></div>
+                </div>
+                <div class="stacked-day ${col.selected ? 'selected' : ''}">${col.label}</div>
+              </div>
+            `;
+          }).join('')}
+        </div>
+      `;
+    }
+
+    // ---------- Navigation & Date Controls ----------
+    function switchMainTab(tab) {
+      currentMainTab = tab;
+      ['dashboard', 'entry', 'report'].forEach(t => {
+        document.getElementById(`tab-${t}`).classList.toggle('hidden', t !== tab);
+        document.getElementById(`tab-btn-${t}`).classList.toggle('active', t === tab);
+      });
+      if (tab === 'dashboard') renderDashboard();
+      if (tab === 'entry') renderEntry();
+      if (tab === 'report') renderReport();
+    }
+
+    function switchSubTab(sub) {
+      currentSubTab = sub;
+      document.getElementById('subtab-meals').classList.toggle('hidden', sub !== 'meals');
+      document.getElementById('subtab-staff').classList.toggle('hidden', sub !== 'staff');
+      document.getElementById('subtab-btn-meals').classList.toggle('active', sub === 'meals');
+      document.getElementById('subtab-btn-staff').classList.toggle('active', sub === 'staff');
+      renderEntry();
+    }
+
+    function onDateChange(val) {
+      if (!val) return;
+      selectedDate = val;
+      if (currentMainTab === 'dashboard') renderDashboard();
+      if (currentMainTab === 'entry') renderEntry();
+    }
+
+    function shiftDate(delta) {
+      onDateChange(addDays(selectedDate, delta));
+    }
+
+    function setToday() {
+      onDateChange(toLocalISODate(new Date()));
+    }
+
+    // ---------- Render Tab 1: Dashboard ----------
+    function renderDashboard() {
+      document.getElementById('dash-date-label').textContent = formatThaiShort(selectedDate);
+      document.getElementById('dash-date-input').value = selectedDate;
+
+      const day = getDaySummary(selectedDate);
+
+      // 5 KPI Cards
+      document.getElementById('dash-kpi-grid').innerHTML = `
+        <div class="kpi-card green-text">
+          <div><div class="kpi-val">${day.b}</div><div class="kpi-label">มื้อเช้า</div></div>
+          <div class="kpi-icon">🌅</div>
+        </div>
+        <div class="kpi-card amber">
+          <div><div class="kpi-val">${day.l}</div><div class="kpi-label">มื้อเที่ยง</div></div>
+          <div class="kpi-icon">☀️</div>
+        </div>
+        <div class="kpi-card blue">
+          <div><div class="kpi-val">${day.d}</div><div class="kpi-label">มื้อเย็น</div></div>
+          <div class="kpi-icon">🌙</div>
+        </div>
+        <div class="kpi-card solid-green">
+          <div><div class="kpi-val">${day.total}</div><div class="kpi-label">รวมทั้งวัน</div></div>
+          <div class="kpi-icon">🍽️</div>
+        </div>
+        <div class="kpi-card purple">
+          <div>
+            <div class="kpi-val">${day.hasAttendance ? `${day.present}/${day.totalStaff}` : `-/${day.totalStaff}`}</div>
+            <div class="kpi-label">บุคลากรมาทำงาน</div>
+          </div>
+          <div class="kpi-icon">👩‍⚕️</div>
+        </div>
+      `;
+
+      // Daily table
+      document.getElementById('dash-daily-table-title').textContent = `ผู้รับบริการรายวัน (${formatThaiShort(selectedDate)})`;
+      document.getElementById('dash-daily-table').innerHTML = `
+        <table>
+          <thead>
+            <tr>
+              <th>ประเภท</th>
+              <th class="num">เช้า</th>
+              <th class="num">เที่ยง</th>
+              <th class="num">เย็น</th>
+              <th class="num">รวม</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${CATEGORIES.map(c => {
+              const r = day.byCat[c.key];
+              return `
+                <tr>
+                  <td>${c.label}</td>
+                  <td class="num">${r.b}</td>
+                  <td class="num">${r.l}</td>
+                  <td class="num">${r.d}</td>
+                  <td class="num"><strong>${r.total}</strong></td>
+                </tr>
+              `;
+            }).join('')}
+          </tbody>
+        </table>
+      `;
+
+      // Staff attendance card
+      document.getElementById('dash-att-date-sub').textContent = `วันที่ ${formatThaiShort(selectedDate)}`;
+      if (day.hasAttendance) {
+        renderDonut('dash-att-donut', [
+          { label: 'มา', value: day.present, color: '#2d7a4f' },
+          { label: 'ไม่มา', value: day.absent, color: '#d9634c' }
+        ], day.totalStaff);
+      } else {
+        renderDonut('dash-att-donut', [
+          { label: 'มา', value: 0, color: '#2d7a4f' },
+          { label: 'ไม่มา', value: 0, color: '#d9634c' }
+        ], 0);
+      }
+
+      const monthStart = selectedDate.slice(0, 8) + '01';
+      const [yy, mm] = selectedDate.split('-').map(Number);
+      const lastDayOfMonth = new Date(yy, mm, 0).getDate();
+      const monthEnd = `${selectedDate.slice(0, 8)}${String(lastDayOfMonth).padStart(2, '0')}`;
+      const monthAgg = aggregateRange(monthStart, monthEnd);
+
+      document.getElementById('dash-att-month-sub').textContent = `จำนวนวันที่มา · ${formatThaiMonthYear(selectedDate)}`;
+      const staffBars = [...monthAgg.staffList]
+        .sort((a, b) => b.present - a.present)
+        .map(s => ({ label: s.name, value: s.present }));
+      renderHBars('dash-att-bars', staffBars, true);
+
+      const notesEl = document.getElementById('dash-att-notes');
+      if (!day.hasAttendance) {
+        notesEl.innerHTML = `<div class="helper-text">ยังไม่มีการบันทึกการมาทำงานของวันที่ ${formatThaiShort(selectedDate)}</div>`;
+      } else if (day.absentNotes.length === 0) {
+        notesEl.innerHTML = `<div class="helper-text">หมายเหตุวันนี้: มาทำงานครบทุกคน</div>`;
+      } else {
+        notesEl.innerHTML = `
+          <div style="font-weight:600;margin-bottom:6px;">หมายเหตุวันนี้</div>
+          <ul class="note-list">
+            ${day.absentNotes.map(n => `<li>✕ ${n.name} — ${n.reason}</li>`).join('')}
+          </ul>
+        `;
+      }
+
+      // 14-day stacked chart
+      const cols14 = [];
+      for (let i = -13; i <= 0; i++) {
+        const dIso = addDays(selectedDate, i);
+        const s = getDaySummary(dIso);
+        cols14.push({
+          label: Number(dIso.split('-')[2]),
+          title: formatThaiShort(dIso),
+          b: s.b, l: s.l, d: s.d, total: s.total,
+          selected: dIso === selectedDate
+        });
+      }
+      renderStackedColumns('dash-14days-chart', cols14, false);
+
+      // Monthly categories & ratios
+      const monthLabel = formatThaiMonthYear(selectedDate);
+      document.getElementById('dash-month-cat-title').textContent = `ผู้รับบริการแยกตามประเภท · ${monthLabel}`;
+      renderHBars('dash-month-cat-bars', CATEGORIES.map(c => ({
+        label: c.label,
+        value: monthAgg.byCat[c.key].total
+      })), false);
+
+      document.getElementById('dash-month-ratio-title').textContent = `สัดส่วนผู้รับบริการ · ${monthLabel}`;
+      renderDonut('dash-month-donut-cat', CATEGORIES.map(c => ({
+        label: c.label,
+        value: monthAgg.byCat[c.key].total,
+        color: c.color
+      })), monthAgg.total);
+
+      renderDonut('dash-month-donut-meal', [
+        { label: 'มื้อเช้า', value: monthAgg.b, color: '#2d7a4f' },
+        { label: 'มื้อเที่ยง', value: monthAgg.l, color: '#d99b26' },
+        { label: 'มื้อเย็น', value: monthAgg.d, color: '#4285c4' }
+      ], monthAgg.total);
+    }
+
+    // ---------- Render Tab 2: Data Entry ----------
+    let draftAttendance = {};
+
+    function renderEntry() {
+      document.getElementById('entry-date-label').textContent = formatThaiShort(selectedDate);
+      document.getElementById('entry-date-input').value = selectedDate;
+
+      const rec = db.records[selectedDate];
+      const meals = (rec && rec.hasMeals && rec.meals) ? rec.meals : emptyMeals();
+
+      // 2.1 Meals table
+      const tbody = document.getElementById('entry-meals-tbody');
+      tbody.innerHTML = CATEGORIES.map(c => {
+        const m = meals[c.key] || { b: 0, l: 0, d: 0 };
+        return `
+          <tr>
+            <td>${c.label}</td>
+            <td class="num"><input type="number" min="0" class="meal-input" data-cat="${c.key}" data-meal="b" value="${m.b}" oninput="recalcEntryTotals()" /></td>
+            <td class="num"><input type="number" min="0" class="meal-input" data-cat="${c.key}" data-meal="l" value="${m.l}" oninput="recalcEntryTotals()" /></td>
+            <td class="num"><input type="number" min="0" class="meal-input" data-cat="${c.key}" data-meal="d" value="${m.d}" oninput="recalcEntryTotals()" /></td>
+          </tr>
+        `;
+      }).join('') + `
+        <tr class="total-row">
+          <td>รวม (<span id="entry-sum-all">0</span>)</td>
+          <td class="num" id="entry-sum-b">0</td>
+          <td class="num" id="entry-sum-l">0</td>
+          <td class="num" id="entry-sum-d">0</td>
+        </tr>
+      `;
+
+      document.getElementById('entry-meal-note').value = (rec && rec.mealNote) ? rec.mealNote : '';
+      recalcEntryTotals();
+
+      const hasMeals = !!(rec && rec.hasMeals);
+      document.getElementById('save-meals-btn').textContent = hasMeals ? 'อัปเดตข้อมูลวันนี้' : 'บันทึกข้อมูลวันนี้';
+      document.getElementById('delete-meals-btn').classList.toggle('hidden', !hasMeals);
+      document.getElementById('meals-status-hint').textContent = hasMeals
+        ? 'วันที่นี้มีข้อมูลแล้ว การบันทึกจะทับของเดิม'
+        : 'ยังไม่มีข้อมูลสำหรับวันนี้';
+
+      // 2.2 Staff attendance
+      draftAttendance = {};
+      db.staff.forEach(s => {
+        const existing = rec && rec.hasAttendance && rec.attendance && rec.attendance[s.id];
+        draftAttendance[s.id] = existing
+          ? { status: existing.status, reason: existing.reason || '' }
+          : { status: 'present', reason: '' };
+      });
+      renderStaffEntryList();
+
+      const hasAtt = !!(rec && rec.hasAttendance);
+      document.getElementById('save-staff-btn').textContent = hasAtt ? 'อัปเดตข้อมูลบุคลากร' : 'บันทึกข้อมูลบุคลากร';
+      document.getElementById('staff-status-hint').textContent = hasAtt
+        ? 'วันที่นี้บันทึกข้อมูลบุคลากรแล้ว'
+        : 'ค่าเริ่มต้นตั้งเป็นมาทำงานทั้งหมด กดบันทึกเพื่อยืนยัน';
+      renderStaffChips();
+    }
+
+    function recalcEntryTotals() {
+      let b = 0, l = 0, d = 0;
+      document.querySelectorAll('.meal-input').forEach(inp => {
+        const val = Math.max(0, parseInt(inp.value, 10) || 0);
+        if (inp.dataset.meal === 'b') b += val;
+        if (inp.dataset.meal === 'l') l += val;
+        if (inp.dataset.meal === 'd') d += val;
+      });
+      document.getElementById('entry-sum-b').textContent = b;
+      document.getElementById('entry-sum-l').textContent = l;
+      document.getElementById('entry-sum-d').textContent = d;
+      document.getElementById('entry-sum-all').textContent = b + l + d;
+    }
+
+    function saveMeals() {
+      const meals = emptyMeals();
+      document.querySelectorAll('.meal-input').forEach(inp => {
+        const val = Math.max(0, parseInt(inp.value, 10) || 0);
+        meals[inp.dataset.cat][inp.dataset.meal] = val;
+      });
+      if (!db.records[selectedDate]) db.records[selectedDate] = {};
+      db.records[selectedDate].hasMeals = true;
+      db.records[selectedDate].meals = meals;
+      db.records[selectedDate].mealNote = document.getElementById('entry-meal-note').value.trim();
+      saveDB();
+      renderEntry();
+      showToast(`บันทึกข้อมูลผู้รับบริการวันที่ ${formatThaiShort(selectedDate)} เรียบร้อย`);
+    }
+
+    function deleteMeals() {
+      if (!confirm(`ต้องการลบข้อมูลผู้รับบริการวันที่ ${formatThaiShort(selectedDate)} ใช่หรือไม่?`)) return;
+      if (db.records[selectedDate]) {
+        db.records[selectedDate].hasMeals = false;
+        delete db.records[selectedDate].meals;
+        delete db.records[selectedDate].mealNote;
+        if (!db.records[selectedDate].hasAttendance) {
+          delete db.records[selectedDate];
+        }
+        saveDB();
+      }
+      renderEntry();
+      showToast('ลบข้อมูลผู้รับบริการของวันดังกล่าวแล้ว');
+    }
+
+    function renderStaffEntryList() {
+      const container = document.getElementById('entry-staff-list');
+      if (db.staff.length === 0) {
+        container.innerHTML = '<p class="helper-text">ยังไม่มีรายชื่อบุคลากร กรุณากด "จัดการรายชื่อบุคลากร" เพื่อเพิ่ม</p>';
+        return;
+      }
+      container.innerHTML = db.staff.map(s => {
+        const st = draftAttendance[s.id] || { status: 'present', reason: '' };
+        const isAbsent = st.status === 'absent';
+        return `
+          <div class="staff-edit-row">
+            <div style="font-weight:500;">${s.name}</div>
+            <div class="status-toggle">
+              <button type="button" class="status-btn present ${!isAbsent ? 'active' : ''}" onclick="setStaffStatus('${s.id}', 'present')">มาทำงาน</button>
+              <button type="button" class="status-btn absent ${isAbsent ? 'active' : ''}" onclick="setStaffStatus('${s.id}', 'absent')">ไม่มา</button>
+            </div>
+            <input type="text" class="reason-input" placeholder="${isAbsent ? 'ระบุเหตุผล เช่น อบรม, ลาป่วย' : '—'}"
+              value="${st.reason || ''}" ${!isAbsent ? 'disabled' : ''}
+              oninput="draftAttendance['${s.id}'].reason = this.value" />
+          </div>
+        `;
+      }).join('');
+    }
+
+    function setStaffStatus(id, status) {
+      if (!draftAttendance[id]) draftAttendance[id] = { status: 'present', reason: '' };
+      draftAttendance[id].status = status;
+      if (status === 'present') draftAttendance[id].reason = '';
+      renderStaffEntryList();
+    }
+
+    function saveAttendance() {
+      if (!db.records[selectedDate]) db.records[selectedDate] = {};
+      db.records[selectedDate].hasAttendance = true;
+      db.records[selectedDate].attendance = JSON.parse(JSON.stringify(draftAttendance));
+      saveDB();
+      renderEntry();
+      showToast(`บันทึกข้อมูลบุคลากรวันที่ ${formatThaiShort(selectedDate)} เรียบร้อย`);
+    }
+
+    function toggleStaffManager() {
+      document.getElementById('staff-manager-card').classList.toggle('hidden');
+    }
+
+    function renderStaffChips() {
+      document.getElementById('staff-chip-list').innerHTML = db.staff.map(s => `
+        <span class="staff-chip">
+          ${s.name}
+          <button title="ลบรายชื่อ" onclick="removeStaffMember('${s.id}')">×</button>
+        </span>
+      `).join('');
+    }
+
+    function addStaffMember() {
+      const inp = document.getElementById('new-staff-name');
+      const name = inp.value.trim();
+      if (!name) return;
+      const id = 's_' + Date.now();
+      db.staff.push({ id, name });
+      draftAttendance[id] = { status: 'present', reason: '' };
+      inp.value = '';
+      saveDB();
+      renderStaffEntryList();
+      renderStaffChips();
+      showToast(`เพิ่ม "${name}" เรียบร้อย`);
+    }
+
+    function removeStaffMember(id) {
+      const st = db.staff.find(x => x.id === id);
+      if (!st || !confirm(`ต้องการลบรายชื่อ "${st.name}" ออกจากระบบใช่หรือไม่?`)) return;
+      db.staff = db.staff.filter(x => x.id !== id);
+      delete draftAttendance[id];
+      saveDB();
+      renderStaffEntryList();
+      renderStaffChips();
+      showToast('ลบรายชื่อบุคลากรแล้ว');
+    }
+
+    // ---------- Render Tab 3: Report ----------
+    function onReportRangeChange() {
+      const s = document.getElementById('rep-start-input').value;
+      const e = document.getElementById('rep-end-input').value;
+      if (s) reportStart = s;
+      if (e) reportEnd = e;
+      if (reportStart > reportEnd) {
+        const tmp = reportStart;
+        reportStart = reportEnd;
+        reportEnd = tmp;
+      }
+      renderReport();
+    }
+
+    function renderReport() {
+      document.getElementById('rep-start-input').value = reportStart;
+      document.getElementById('rep-end-input').value = reportEnd;
+      document.getElementById('rep-start-label').textContent = formatThaiShort(reportStart);
+      document.getElementById('rep-end-label').textContent = formatThaiShort(reportEnd);
+
+      const agg = aggregateRange(reportStart, reportEnd);
+      const avg = agg.mealDays > 0 ? Math.round(agg.total / agg.mealDays) : 0;
+
+      document.getElementById('rep-kpi-grid').innerHTML = `
+        <div class="kpi-card green-text">
+          <div><div class="kpi-val">${agg.b}</div><div class="kpi-label">รวมมื้อเช้า</div></div>
+        </div>
+        <div class="kpi-card amber">
+          <div><div class="kpi-val">${agg.l}</div><div class="kpi-label">รวมมื้อเที่ยง</div></div>
+        </div>
+        <div class="kpi-card blue">
+          <div><div class="kpi-val">${agg.d}</div><div class="kpi-label">รวมมื้อเย็น</div></div>
+        </div>
+        <div class="kpi-card solid-green">
+          <div><div class="kpi-val">${agg.total}</div><div class="kpi-label">รวมทั้งหมด</div></div>
+        </div>
+        <div class="kpi-card purple">
+          <div><div class="kpi-val">${avg}</div><div class="kpi-label">เฉลี่ยต่อวัน (${agg.mealDays} วัน)</div></div>
+        </div>
+      `;
+
+      // Category summary table
+      document.getElementById('rep-cat-table').innerHTML = `
+        <table>
+          <thead>
+            <tr>
+              <th>ประเภท</th>
+              <th class="num">เช้า</th>
+              <th class="num">เที่ยง</th>
+              <th class="num">เย็น</th>
+              <th class="num">รวม</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${CATEGORIES.map(c => {
+              const r = agg.byCat[c.key];
+              return `
+                <tr>
+                  <td>${c.label}</td>
+                  <td class="num">${r.b}</td>
+                  <td class="num">${r.l}</td>
+                  <td class="num">${r.d}</td>
+                  <td class="num"><strong>${r.total}</strong></td>
+                </tr>
+              `;
+            }).join('')}
+            <tr class="total-row">
+              <td>รวม</td>
+              <td class="num">${agg.b}</td>
+              <td class="num">${agg.l}</td>
+              <td class="num">${agg.d}</td>
+              <td class="num">${agg.total}</td>
+            </tr>
+          </tbody>
+        </table>
+      `;
+
+      // Category bars & donuts
+      renderHBars('rep-cat-bars', CATEGORIES.map(c => ({
+        label: c.label,
+        value: agg.byCat[c.key].total
+      })), false);
+
+      renderDonut('rep-donut-cat', CATEGORIES.map(c => ({
+        label: c.label,
+        value: agg.byCat[c.key].total,
+        color: c.color
+      })), agg.total);
+
+      renderDonut('rep-donut-meal', [
+        { label: 'มื้อเช้า', value: agg.b, color: '#2d7a4f' },
+        { label: 'มื้อเที่ยง', value: agg.l, color: '#d99b26' },
+        { label: 'มื้อเย็น', value: agg.d, color: '#4285c4' }
+      ], agg.total);
+
+      // Daily stacked chart
+      const mealDaysOnly = agg.dailyList.filter(d => d.hasMeals);
+      renderStackedColumns('rep-daily-chart', mealDaysOnly.map(d => ({
+        label: Number(d.iso.split('-')[2]),
+        title: formatThaiShort(d.iso),
+        b: d.b, l: d.l, d: d.d, total: d.total,
+        selected: d.iso === selectedDate
+      })), true);
+
+      // Daily table
+      document.getElementById('rep-daily-table').innerHTML = agg.dailyList.length === 0
+        ? '<p class="helper-text">ไม่มีข้อมูลในช่วงวันที่ที่เลือก</p>'
+        : `
+          <table>
+            <thead>
+              <tr>
+                <th>วันที่</th>
+                <th class="num">เช้า</th>
+                <th class="num">เที่ยง</th>
+                <th class="num">เย็น</th>
+                <th class="num">รวม</th>
+                <th class="num">บุคลากรมา</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${agg.dailyList.map(d => `
+                <tr>
+                  <td>${formatThaiShort(d.iso)}</td>
+                  <td class="num">${d.hasMeals ? d.b : '-'}</td>
+                  <td class="num">${d.hasMeals ? d.l : '-'}</td>
+                  <td class="num">${d.hasMeals ? d.d : '-'}</td>
+                  <td class="num"><strong>${d.hasMeals ? d.total : '-'}</strong></td>
+                  <td class="num">${d.hasAttendance ? `${d.present}/${d.totalStaff}` : '-'}</td>
+                </tr>
+              `).join('')}
+            </tbody>
+          </table>
+        `;
+
+      // Staff summary table
+      document.getElementById('rep-staff-table').innerHTML = `
+        <table>
+          <thead>
+            <tr>
+              <th>ชื่อ</th>
+              <th class="num">มา (วัน)</th>
+              <th class="num">ไม่มา (วัน)</th>
+              <th class="num">% มา</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${agg.staffList.map(s => {
+              const total = s.present + s.absent;
+              const pct = total > 0 ? Math.round((s.present / total) * 100) : 0;
+              return `
+                <tr>
+                  <td>${s.name}</td>
+                  <td class="num">${s.present}</td>
+                  <td class="num">${s.absent}</td>
+                  <td class="num">${pct}%</td>
+                </tr>
+              `;
+            }).join('')}
+          </tbody>
+        </table>
+      `;
+      document.getElementById('rep-staff-foot').textContent = `นับจาก ${agg.attDays} วันที่มีการบันทึก`;
+    }
+
+    // ---------- Export CSV & JSON Backup ----------
+    function downloadCSV() {
+      const agg = aggregateRange(reportStart, reportEnd);
+      const rows = [];
+      rows.push(['รายงานงานโภชนาการ โรงพยาบาลเทพา', `ช่วงวันที่ ${formatThaiShort(reportStart)} ถึง ${formatThaiShort(reportEnd)}`]);
+      rows.push([]);
+      rows.push(['สรุปตามประเภทผู้รับบริการ']);
+      rows.push(['ประเภท', 'เช้า', 'เที่ยง', 'เย็น', 'รวม']);
+      CATEGORIES.forEach(c => {
+        const r = agg.byCat[c.key];
+        rows.push([c.label, r.b, r.l, r.d, r.total]);
+      });
+      rows.push(['รวมทั้งหมด', agg.b, agg.l, agg.d, agg.total]);
+      rows.push([]);
+      rows.push(['ข้อมูลรายวัน']);
+      rows.push(['วันที่', 'เช้า', 'เที่ยง', 'เย็น', 'รวม', 'บุคลากรมา']);
+      agg.dailyList.forEach(d => {
+        rows.push([
+          formatThaiShort(d.iso),
+          d.hasMeals ? d.b : 0,
+          d.hasMeals ? d.l : 0,
+          d.hasMeals ? d.d : 0,
+          d.hasMeals ? d.total : 0,
+          d.hasAttendance ? `${d.present}/${d.totalStaff}` : '-'
+        ]);
+      });
+
+      const csvContent = '\uFEFF' + rows.map(r => r.map(v => `"${String(v).replace(/"/g, '""')}"`).join(',')).join('\n');
+      const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `รายงานโภชนาการ_${reportStart}_ถึง_${reportEnd}.csv`;
+      a.click();
+      URL.revokeObjectURL(url);
+      showToast('ดาวน์โหลดไฟล์ CSV เรียบร้อย');
+    }
+
+    function exportJSON() {
+      const blob = new Blob([JSON.stringify(db, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `backup_nutrition_${toLocalISODate(new Date())}.json`;
+      a.click();
+      URL.revokeObjectURL(url);
+      showToast('สำรองข้อมูลเป็นไฟล์ JSON เรียบร้อย');
+    }
+
+    function importJSON(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        try {
+          const parsed = JSON.parse(e.target.result);
+          if (!parsed.staff || !parsed.records) throw new Error('รูปแบบไฟล์ไม่ถูกต้อง');
+          db = parsed;
+          saveDB();
+          switchMainTab(currentMainTab);
+          showToast('นำเข้าข้อมูลเรียบร้อยแล้ว');
+        } catch (err) {
+          alert('ไม่สามารถนำเข้าไฟล์ได้: ' + err.message);
+        }
+      };
+      reader.readAsText(file);
+      event.target.value = '';
+    }
+
+    function resetDemoData() {
+      if (!confirm('ต้องการรีเซ็ตกลับเป็นข้อมูลตัวอย่าง (13-14 พ.ย. 2569) ใช่หรือไม่? ข้อมูลที่คุณกรอกไว้จะถูกแทนที่')) return;
+      db = getDefaultSeedData();
+      saveDB();
+      selectedDate = '2026-11-14';
+      reportStart = '2026-11-01';
+      reportEnd = '2026-11-14';
+      switchMainTab(currentMainTab);
+      showToast('รีเซ็ตเป็นข้อมูลตัวอย่างเรียบร้อย');
+    }
+
+    // Initial render
+    renderDashboard();
+  </script>
+</body>
+</html>
